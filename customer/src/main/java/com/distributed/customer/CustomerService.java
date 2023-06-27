@@ -27,8 +27,10 @@ public class CustomerService {
         if (fraudCheckResponse.isFraudster()) {
             throw new IllegalStateException("fraudster");
         } else {
-            notificationClient.registerNotification(new NotificationRegisterRequest(
+            notificationClient.register(new NotificationRegisterRequest(
                         customer.getId(),
+                        customer.getEmail(),
+                        "Distributed App",
                         NotificationType.USER_CREATED,
                         String.format("User with email: %s was successfully created.", customer.getEmail())
                     )

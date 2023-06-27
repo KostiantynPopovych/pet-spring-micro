@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.GenerationType;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -28,7 +29,10 @@ public class Notification {
             generator = "notification_id_sequence"
     )
     private Integer id;
-    private Integer customerId;
+    private Integer toCustomerId;
     private NotificationType type;
     private String message;
+    private String sender;
+    private LocalDateTime sentAt;
+    private String toCustomerEmail;
 }
