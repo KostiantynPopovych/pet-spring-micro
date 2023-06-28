@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication(
-//        scanBasePackages = {
-//                "com.distributed.notification",
-//                "com.distributed.amqp"
-//        }
+        scanBasePackages = {
+                "com.distributed.customer",
+                "com.distributed.amqp"
+        }
 )
 @EnableEurekaClient
 @EnableFeignClients(

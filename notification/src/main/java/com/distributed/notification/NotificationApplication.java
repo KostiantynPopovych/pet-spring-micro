@@ -7,10 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(
-//    scanBasePackages = {
-//        "com.distributed.notification",
-//        "com.distributed.amqp"
-//    }
+    scanBasePackages = {
+        "com.distributed.notification",
+        "com.distributed.amqp"
+    }
 )
 public class NotificationApplication {
     public static void main(String[] args) {
