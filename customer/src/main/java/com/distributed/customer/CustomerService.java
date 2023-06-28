@@ -35,7 +35,7 @@ public class CustomerService {
                     String.format("User with email: %s was successfully created.", customer.getEmail())
             );
             rabbitMQMessageProducer.publish(
-                    "notificationRegisterRequest",
+                    notificationRegisterRequest,
                     "internal.exchange",
                     "internal.notification.routing-key"
                     );
