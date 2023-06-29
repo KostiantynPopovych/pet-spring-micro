@@ -1,0 +1,6 @@
+CREATE DATABASE notification;
+GRANT ALL PRIVILEGES ON DATABASE notification TO distributed;
+CREATE DATABASE customer;
+GRANT ALL PRIVILEGES ON DATABASE customer TO distributed;
+CREATE DATABASE fraud;
+GRANT ALL PRIVILEGES ON DATABASE fraud TO distributed;
