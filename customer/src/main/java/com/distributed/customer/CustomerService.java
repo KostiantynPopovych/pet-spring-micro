@@ -1,11 +1,12 @@
 package com.distributed.customer;
 
-import com.distributed.amqp.RabbitMQMessageProducer;
+//import com.distributed.amqp.RabbitMQMessageProducer;
 import com.distributed.clients.fraud.FraudCheckResponse;
 import com.distributed.clients.fraud.FraudClient;
 import com.distributed.clients.notification.NotificationRegisterRequest;
 import com.distributed.clients.notification.NotificationType;
 import lombok.AllArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Service;
 public class CustomerService {
     private final CustomerRepository customerRepository;
     private final FraudClient fraudClient;
-    private final RabbitMQMessageProducer rabbitMQMessageProducer;
+//    private final RabbitMQMessageProducer rabbitMQMessageProducer;
+    private final KafkaTemplate<String, NotificationRegisterRequest> kafkaTemplate;
+
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
                 .firstName(request.firstName())
@@ -34,11 +37,12 @@ public class CustomerService {
                     NotificationType.USER_CREATED,
                     String.format("User with email: %s was successfully created.", customer.getEmail())
             );
-            rabbitMQMessageProducer.publish(
-                    notificationRegisterRequest,
-                    "internal.exchange",
-                    "internal.notification.routing-key"
-                    );
+            kafkaTemplate.send("notification", notificationRegisterRequest);
+//            rabbitMQMessageProducer.publish(
+//                    notificationRegisterRequest,
+//                    "internal.exchange",
+//                    "internal.notification.routing-key"
+//                    );
         }
 
     }

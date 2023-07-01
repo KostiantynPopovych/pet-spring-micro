@@ -18,7 +18,8 @@
     <module>clients</module>
     <module>notification</module>
     <module>apigw</module>
-    <module>amqp</module>
+<!--    <module>amqp</module>-->
+    <module>kafka-broker</module>
   </modules>
 
   <properties>

@@ -10,7 +10,8 @@ import org.springframework.context.annotation.PropertySources;
 @SpringBootApplication(
         scanBasePackages = {
                 "com.distributed.customer",
-                "com.distributed.amqp"
+//                "com.distributed.amqp",
+                "com.distributed.kafka"
         }
 )
 @EnableEurekaClient

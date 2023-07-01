@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 @Slf4j
-public class NotificationConsumer {
+public class NotificationRabbitConsumer {
     private final NotificationService notificationService;
 
-    @RabbitListener(queues = "${rabbitmq.queues.notification}")
+//    @RabbitListener(queues = "${rabbitmq.queues.notification}")
     public void consumer(NotificationRegisterRequest notificationRegisterRequest) {
         log.info("Consumed {} from queue", notificationRegisterRequest);
         notificationService.register(notificationRegisterRequest);
